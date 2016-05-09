@@ -18,7 +18,6 @@
 		B1C12E8E1A1019D1005D3631 /* SlackRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C12E8D1A1019D1005D3631 /* SlackRequestViewController.m */; };
 		B1C12E911A101EC2005D3631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C12E901A101EC2005D3631 /* LoginViewController.m */; };
 		B1CBABDB1A111800008FB1AA /* SpotifyAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CBABDA1A111800008FB1AA /* SpotifyAuthViewController.m */; };
-		B1CBABDD1A111992008FB1AA /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CBABDC1A111992008FB1AA /* Spotify.framework */; };
 		B1CBABDF1A111A07008FB1AA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CBABDE1A111A07008FB1AA /* AVFoundation.framework */; };
 		D325AB4E0B0E4363AA7A1841 /* libPods-SlackAuths.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B691CFEE51C2445F9CEAF1EC /* libPods-SlackAuths.a */; };
 /* End PBXBuildFile section */
@@ -56,7 +55,6 @@
 		B1C12E901A101EC2005D3631 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B1CBABD91A111800008FB1AA /* SpotifyAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyAuthViewController.h; sourceTree = "<group>"; };
 		B1CBABDA1A111800008FB1AA /* SpotifyAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyAuthViewController.m; sourceTree = "<group>"; };
-		B1CBABDC1A111992008FB1AA /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "../../ios-sdk/Spotify.framework"; sourceTree = "<group>"; };
 		B1CBABDE1A111A07008FB1AA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B691CFEE51C2445F9CEAF1EC /* libPods-SlackAuths.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SlackAuths.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35369F639AB6B06BBF45E14 /* Pods-SlackAuths.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlackAuths.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlackAuths/Pods-SlackAuths.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1CBABDF1A111A07008FB1AA /* AVFoundation.framework in Frameworks */,
-				B1CBABDD1A111992008FB1AA /* Spotify.framework in Frameworks */,
 				D325AB4E0B0E4363AA7A1841 /* libPods-SlackAuths.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				B1CBABDE1A111A07008FB1AA /* AVFoundation.framework */,
-				B1CBABDC1A111992008FB1AA /* Spotify.framework */,
 				B691CFEE51C2445F9CEAF1EC /* libPods-SlackAuths.a */,
 			);
 			name = Frameworks;
@@ -233,7 +229,7 @@
 		149C45581A0F3212004FA05E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Louis Tur";
 				TargetAttributes = {
 					149C455F1A0F3212004FA05E = {
@@ -390,6 +386,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -460,7 +457,9 @@
 				INFOPLIST_FILE = SlackAuths/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SundaySeltzer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -476,7 +475,9 @@
 				INFOPLIST_FILE = SlackAuths/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SundaySeltzer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -494,6 +495,7 @@
 				);
 				INFOPLIST_FILE = SlackAuthsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SundaySeltzer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlackAuths.app/SlackAuths";
 			};
@@ -509,6 +511,7 @@
 				);
 				INFOPLIST_FILE = SlackAuthsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SundaySeltzer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlackAuths.app/SlackAuths";
 			};

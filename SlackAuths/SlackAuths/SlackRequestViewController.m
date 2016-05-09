@@ -50,7 +50,6 @@ static NSString * const kSlackTokenURI = @"https://slack.com/api/oauth.access";
     if ( [AFOAuthCredential retrieveCredentialWithIdentifier:@"slack"] ) {
         NSLog(@"Saved Credentials Found");
     }else{
-        
         //this loading UI can be removed... not really seen as is...
         MBProgressHUD *webLoadProgressHUD = [[MBProgressHUD alloc] initWithFrame:self.view.frame];
         [webLoadProgressHUD setMode:MBProgressHUDModeIndeterminate];
@@ -63,10 +62,7 @@ static NSString * const kSlackTokenURI = @"https://slack.com/api/oauth.access";
             [webLoadProgressHUD hide:YES afterDelay:2.0];
             NSLog(@"%lu", self.slackWebAPIRequest.dataDetectorTypes);
         }];
-
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,17 +94,18 @@ static NSString * const kSlackTokenURI = @"https://slack.com/api/oauth.access";
      *  I love UIWebView+AFNetworking... this loadRequest:progress: method, automatically sets up a
      *  UIWebView with the correct requests and delegation methods ... swoon.
      */
-    [self.slackWebAPIRequest loadRequest:self.slackURLRequest progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-    } success:^NSString *(NSHTTPURLResponse *response, NSString *HTML) {
+    [self.slackWebAPIRequest loadRequest:self.slackURLRequest
+                                progress:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {}
+                                 success:^NSString *(NSHTTPURLResponse *response, NSString *HTML) {
        // NSLog(@"%@", HTML);
         NSLog(@"%@", response );
         NSLog(@"The response URL: %@ ", response.URL);
         
         return HTML;
-    } failure:^(NSError *error) {
+    }
+                                 failure:^(NSError *error) {
         NSLog(@"You may have gotten an error, but the URLRequest was: %@ ", self.slackURLRequest);
     }];
-
 }
 
 //-- Delegate method for UIWebView to Start request loading
